@@ -9,7 +9,7 @@ int_complex_t cabs(complex_t a) {
 }
 
 void crosscorr(hls::stream<channels_in_t>& stream_in, hls::stream<channels_out_t>& stream_out) {
-    #pragma HLS DATAFLOW
+    #pragma HLS INTERFACE port=return mode=ap_ctrl_none
     #pragma HLS INTERFACE port=stream_in mode=axis
     #pragma HLS INTERFACE port=stream_out mode=axis
 
