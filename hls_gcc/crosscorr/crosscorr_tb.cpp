@@ -19,7 +19,7 @@ int main()
     for (int j = 0; j < CHANNELS; j++) {
       test[j] = std::complex<double>((double)std::rand() / RAND_MAX - 0.5, (double)std::rand() / RAND_MAX - 0.5) * 2.0;
       printf("in=%f+i*%f\r\n", test[j].real(), test[j].imag());
-      in.data[j] = complex_t(test[j]);
+      in.data.v[j] = complex_t(test[j]);
     }
 
     stream_in.write(in);
@@ -30,7 +30,7 @@ int main()
 
     for (int j = 1; j < CHANNELS; j++) {
       auto t = test[j] * test[0];
-      auto d = out.data[j - 1];
+      auto d = out.data.v[j - 1];
 
       std::complex<double> ref = t / std::abs(t) / 4.0;
       //std::complex<double> dat = std::complex<double>(d);

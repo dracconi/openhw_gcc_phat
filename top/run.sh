@@ -1,1 +1,1 @@
-$(git rev-parse --show-toplevel)/2025.1/Vivado/bin/vivado -mode tcl -source init.tcl
+$(git rev-parse --show-toplevel)/xilinx/2025.1/Vivado/bin/vivado -mode tcl -source init.tcl
