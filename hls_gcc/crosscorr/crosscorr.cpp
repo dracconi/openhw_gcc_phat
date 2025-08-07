@@ -13,19 +13,21 @@ void crosscorr(hls::stream<channels_in_t>& stream_in, hls::stream<channels_out_t
     #pragma HLS INTERFACE port=stream_in mode=axis
     #pragma HLS INTERFACE port=stream_out mode=axis
 
-    channels_t<CHANNELS> in = stream_in.read();
+    channels_in_t in = stream_in.read();
 
-    channels_t<CHANNELS - 1> out = {};
+    channels_out_t out = {};
+
+    out.set_last(in.get_last());
 
     for (int i = 1; i < CHANNELS; i++) {
-        int_complex_t tmp = int_complex_t(in.data[i]) * int_complex_t(in.data[0]) / 4;
+        int_complex_t tmp = int_complex_t(in.data.v[i]) * int_complex_t(in.data.v[0]) / 4;
         int_complex_t comp = cabs(tmp);
         if (comp.real() != int_complex_t(0.0f)) {
             tmp = tmp / comp;
         } else {
             tmp = complex_t(0.0f);
         }
-        out.data[i - 1] = tmp / 4;
+        out.data.v[i - 1] = tmp / 4;
     }
 
     stream_out.write(out);

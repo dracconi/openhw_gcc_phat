@@ -4,6 +4,11 @@
         "-I/home/mjk/xilinx/2025.1/Vitis/include/etc",
         "-I/home/mjk/xilinx/2025.1/Vitis/include/ap_sysc",
         "-I/home/mjk/xilinx/2025.1/Vitis/lnx64/tools/auto_cc/include",
-        "-I/home/mjk/xilinx/2025.1/Vitis/lnx64/tools/systemc/include"
+        "-I/home/mjk/xilinx/2025.1/Vitis/lnx64/tools/systemc/include",
+        "-I/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/include",
+        "-I/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/include/etc",
+        "-I/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/include/ap_sysc",
+        "-I/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/lnx64/tools/auto_cc/include",
+        "-I/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/lnx64/tools/systemc/include"
     ]
 }
