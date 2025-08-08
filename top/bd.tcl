@@ -1,6 +1,6 @@
 
 ################################################################
-# This is a generated script based on design: design_1
+# This is a generated script based on design: design_2
 #
 # Though there are limitations about the generated script,
 # the main purpose of this utility is to make learning
@@ -41,14 +41,14 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 ################################################################
 
 # To test this script, run the following commands from Vivado Tcl console:
-# source design_1_script.tcl
+# source design_2_script.tcl
 
 
 # The design that will be created by this Tcl script contains the following 
-# module references:
-# samples_interleave, fft_config, fft_config
+# block design container source references:
+# design_1
 
-# Please add the sources of those modules before sourcing this Tcl script.
+# Please add the sources before sourcing this Tcl script.
 
 # If there is no project opened, this script will create a
 # project, but make sure you do not have an existing project
@@ -62,7 +62,7 @@ if { $list_projs eq "" } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name design_1
+set design_name design_2
 
 # If you do not already have an existing IP Integrator design open,
 # you can create a design using the following command:
@@ -131,55 +131,40 @@ if { $nRet != 0 } {
 
 set bCheckIPsPassed 1
 ##################################################################
-# CHECK IPs
+# CHECK Block Design Container Sources
 ##################################################################
-set bCheckIPs 1
-if { $bCheckIPs == 1 } {
-   set list_check_ips "\ 
-xilinx.com:ip:xfft:9.1\
+set bCheckSources 1
+set list_bdc_active "design_1"
+
+array set map_bdc_missing {}
+set map_bdc_missing(ACTIVE) ""
+set map_bdc_missing(BDC) ""
+
+if { $bCheckSources == 1 } {
+   set list_check_srcs "\ 
+design_1 \
 "
 
-   set list_ips_missing ""
-   common::send_gid_msg -ssname BD::TCL -id 2011 -severity "INFO" "Checking if the following IPs exist in the project's IP catalog: $list_check_ips ."
+   common::send_gid_msg -ssname BD::TCL -id 2056 -severity "INFO" "Checking if the following sources for block design container exist in the project: $list_check_srcs .\n\n"
 
-   foreach ip_vlnv $list_check_ips {
-      set ip_obj [get_ipdefs -all $ip_vlnv]
-      if { $ip_obj eq "" } {
-         lappend list_ips_missing $ip_vlnv
+   foreach src $list_check_srcs {
+      if { [can_resolve_reference $src] == 0 } {
+         if { [lsearch $list_bdc_active $src] != -1 } {
+            set map_bdc_missing(ACTIVE) "$map_bdc_missing(ACTIVE) $src"
+         } else {
+            set map_bdc_missing(BDC) "$map_bdc_missing(BDC) $src"
+         }
       }
    }
 
-   if { $list_ips_missing ne "" } {
-      catch {common::send_gid_msg -ssname BD::TCL -id 2012 -severity "ERROR" "The following IPs are not found in the IP Catalog:\n  $list_ips_missing\n\nResolution: Please add the repository containing the IP(s) to the project." }
+   if { [llength $map_bdc_missing(ACTIVE)] > 0 } {
+      catch {common::send_gid_msg -ssname BD::TCL -id 2057 -severity "ERROR" "The following source(s) of Active variants are not found in the project: $map_bdc_missing(ACTIVE)" }
+      common::send_gid_msg -ssname BD::TCL -id 2060 -severity "INFO" "Please add source files for the missing source(s) above."
       set bCheckIPsPassed 0
    }
-
-}
-
-##################################################################
-# CHECK Modules
-##################################################################
-set bCheckModules 1
-if { $bCheckModules == 1 } {
-   set list_check_mods "\ 
-samples_interleave\
-fft_config\
-fft_config\
-"
-
-   set list_mods_missing ""
-   common::send_gid_msg -ssname BD::TCL -id 2020 -severity "INFO" "Checking if the following modules exist in the project's sources: $list_check_mods ."
-
-   foreach mod_vlnv $list_check_mods {
-      if { [can_resolve_reference $mod_vlnv] == 0 } {
-         lappend list_mods_missing $mod_vlnv
-      }
-   }
-
-   if { $list_mods_missing ne "" } {
-      catch {common::send_gid_msg -ssname BD::TCL -id 2021 -severity "ERROR" "The following module(s) are not found in the project: $list_mods_missing" }
-      common::send_gid_msg -ssname BD::TCL -id 2022 -severity "INFO" "Please add source files for the missing module(s) above."
-      set bCheckIPsPassed 0
+   if { [llength $map_bdc_missing(BDC)] > 0 } {
+      catch {common::send_gid_msg -ssname BD::TCL -id 2059 -severity "WARNING" "The following source(s) of variants are not found in the project: $map_bdc_missing(BDC)" }
+      common::send_gid_msg -ssname BD::TCL -id 2060 -severity "INFO" "Please add source files for the missing source(s) above."
    }
 }
 
@@ -192,135 +177,6 @@ if { $bCheckIPsPassed != 1 } {
 # DESIGN PROCs
 ##################################################################
 
-
-# Hierarchical cell: gcc_phat
-proc create_hier_cell_gcc_phat { parentCell nameHier } {
-
-  variable script_folder
-
-  if { $parentCell eq "" || $nameHier eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_gcc_phat() - Empty argument(s)!"}
-     return
-  }
-
-  # Get object for parentCell
-  set parentObj [get_bd_cells $parentCell]
-  if { $parentObj == "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
-     return
-  }
-
-  # Make sure parentObj is hier blk
-  set parentType [get_property TYPE $parentObj]
-  if { $parentType ne "hier" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
-     return
-  }
-
-  # Save current instance; Restore later
-  set oldCurInst [current_bd_instance .]
-
-  # Set parent object as current
-  current_bd_instance $parentObj
-
-  # Create cell and set as current instance
-  set hier_obj [create_bd_cell -type hier $nameHier]
-  current_bd_instance $hier_obj
-
-  # Create interface pins
-  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:axis_rtl:1.0 S_AXIS_SAMPLES
-
-
-  # Create pins
-  create_bd_pin -dir I clk
-
-  # Create instance: xfft_forward, and set properties
-  set xfft_forward [ create_bd_cell -type ip -vlnv xilinx.com:ip:xfft:9.1 xfft_forward ]
-  set_property -dict [list \
-    CONFIG.channels {4} \
-    CONFIG.data_format {fixed_point} \
-    CONFIG.implementation_options {automatically_select} \
-    CONFIG.input_width {16} \
-    CONFIG.number_of_stages_using_block_ram_for_data_and_phase_factors {0} \
-    CONFIG.phase_factor_width {24} \
-    CONFIG.rounding_modes {convergent_rounding} \
-    CONFIG.scaling_options {block_floating_point} \
-    CONFIG.super_sample_rates {1} \
-    CONFIG.target_clock_frequency {100} \
-    CONFIG.target_data_throughput {1} \
-    CONFIG.transform_length {16384} \
-  ] $xfft_forward
-
-
-  # Create instance: xfft_backward, and set properties
-  set xfft_backward [ create_bd_cell -type ip -vlnv xilinx.com:ip:xfft:9.1 xfft_backward ]
-  set_property -dict [list \
-    CONFIG.channels {3} \
-    CONFIG.data_format {fixed_point} \
-    CONFIG.implementation_options {automatically_select} \
-    CONFIG.input_width {16} \
-    CONFIG.number_of_stages_using_block_ram_for_data_and_phase_factors {0} \
-    CONFIG.rounding_modes {convergent_rounding} \
-    CONFIG.scaling_options {block_floating_point} \
-    CONFIG.super_sample_rates {1} \
-    CONFIG.target_clock_frequency {100} \
-    CONFIG.target_data_throughput {1} \
-    CONFIG.transform_length {16384} \
-  ] $xfft_backward
-
-
-  # Create instance: samples_interleave_0, and set properties
-  set block_name samples_interleave
-  set block_cell_name samples_interleave_0
-  if { [catch {set samples_interleave_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $samples_interleave_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: fft_config_0, and set properties
-  set block_name fft_config
-  set block_cell_name fft_config_0
-  if { [catch {set fft_config_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $fft_config_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: fft_config_1, and set properties
-  set block_name fft_config
-  set block_cell_name fft_config_1
-  if { [catch {set fft_config_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $fft_config_1 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-    set_property -dict [list \
-    CONFIG.CHANNELS {3} \
-    CONFIG.FWDINV {"0"} \
-  ] $fft_config_1
-
-
-  # Create interface connections
-  connect_bd_intf_net -intf_net S_AXIS_SAMPLES_1 [get_bd_intf_pins S_AXIS_SAMPLES] [get_bd_intf_pins samples_interleave_0/s_axis_simple]
-  connect_bd_intf_net -intf_net fft_config_0_m_axis_config [get_bd_intf_pins fft_config_0/m_axis_config] [get_bd_intf_pins xfft_forward/S_AXIS_CONFIG]
-  connect_bd_intf_net -intf_net fft_config_1_m_axis_config [get_bd_intf_pins fft_config_1/m_axis_config] [get_bd_intf_pins xfft_backward/S_AXIS_CONFIG]
-  connect_bd_intf_net -intf_net samples_interleave_0_m_axis_complex [get_bd_intf_pins samples_interleave_0/m_axis_complex] [get_bd_intf_pins xfft_forward/S_AXIS_DATA]
-
-  # Create port connections
-  connect_bd_net -net clk_1  [get_bd_pins clk] \
-  [get_bd_pins xfft_backward/aclk] \
-  [get_bd_pins xfft_forward/aclk]
-
-  # Restore current instance
-  current_bd_instance $oldCurInst
-}
 
 
 # Procedure to create entire design; Provide argument to make
@@ -354,13 +210,28 @@ proc create_root_design { parentCell } {
   # Set parent object as current
   current_bd_instance $parentObj
 
+  set_property -dict [list \
+  SRC_RM_MAP./design_1_0.design_1 {design_1_inst_0} \
+] [get_bd_designs $design_name]
+
 
   # Create interface ports
 
   # Create ports
 
-  # Create instance: gcc_phat
-  create_hier_cell_gcc_phat [current_bd_instance .] gcc_phat
+  # Create instance: design_1_0, and set properties
+  set design_1_0 [ create_bd_cell -type container -reference design_1 design_1_0 ]
+  set_property -dict [list \
+    CONFIG.ACTIVE_SIM_BD {design_1.bd} \
+    CONFIG.ACTIVE_SYNTH_BD {design_1.bd} \
+    CONFIG.ENABLE_DFX {0} \
+    CONFIG.LIST_SIM_BD {design_1.bd} \
+    CONFIG.LIST_SYNTH_BD {design_1.bd} \
+    CONFIG.LOCK_PROPAGATE {0} \
+  ] $design_1_0
+
+
+  set_property SELECTED_SIM_MODEL rtl  $design_1_0
 
   # Create port connections
 
@@ -370,6 +241,7 @@ proc create_root_design { parentCell } {
   # Restore current instance
   current_bd_instance $oldCurInst
 
+  validate_bd_design
   save_bd_design
 }
 # End of create_root_design()
@@ -381,6 +253,4 @@ proc create_root_design { parentCell } {
 
 create_root_design ""
 
-
-common::send_gid_msg -ssname BD::TCL -id 2053 -severity "WARNING" "This Tcl script was generated from a block design that has not been validated. It is possible that design <$design_name> may result in errors during validation."
 
