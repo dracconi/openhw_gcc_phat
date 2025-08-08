@@ -18,4 +18,5 @@
 .vitisWorkspace.json
 
 _ide/logs
-_ide/.wsdata
+_ide/.wsdata/
+xilinx
