@@ -12,6 +12,7 @@ void run(hls::stream<channels_in_t>& stream_in, hls::stream<maxima_out_t>& strea
     channels_in_t in = stream_in.read();
 
     for (int i = 0; i < CHANNELS; i++) {
+        #pragma HLS UNROLL
         if (max_value[i] < in.data.v[i].real()) {
             max_value[i] = in.data.v[i].real();
             out.data.v[i] = current_index;
@@ -25,7 +26,10 @@ void run(hls::stream<channels_in_t>& stream_in, hls::stream<maxima_out_t>& strea
         current_index = 0;
         stream_out.write(out);
         for (int i = 0; i < CHANNELS; i++)
+        {
+            #pragma HLS UNROLL
             max_value[i] = 0.0;
+        }
     }
 }
 
