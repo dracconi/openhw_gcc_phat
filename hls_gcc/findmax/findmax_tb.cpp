@@ -7,12 +7,14 @@
 constexpr int ITERATIONS = 6400;
 
 int main() {
-    hls::stream<channels_in_t> stream_in;
-    hls::stream<maxima_out_t> stream_out;
+    hls::stream<channels_in_t, 1> stream_in;
+    hls::stream<maxima_out_t, 1> stream_out;
 
     sample_t max_value[CHANNELS] = {0, 0, 0};
     index_t max_index[CHANNELS] = {0, 0, 0};
     index_t current_index = 0;
+
+    findmax(stream_in, stream_out);
 
     for (int i = 0; i < ITERATIONS; i++) {
         channels_in_t in;
@@ -30,8 +32,6 @@ int main() {
         in.set_last(std::rand() > RAND_MAX / 8 * 7 || i == ITERATIONS - 1);
 
         stream_in.write(in);
-
-        findmax(stream_in, stream_out);
 
         current_index++;
 

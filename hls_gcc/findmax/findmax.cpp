@@ -1,10 +1,9 @@
 #include "findmax.h"
 #include <cstring>
+#include <hls_task.h>
 
-void findmax(hls::stream<channels_in_t>& stream_in, hls::stream<maxima_out_t>& stream_out) {
-    #pragma HLS INTERFACE port=return mode=ap_ctrl_none
-    #pragma HLS INTERFACE port=stream_in mode=axis
-    #pragma HLS INTERFACE port=stream_out mode=axis
+
+void run(hls::stream<channels_in_t>& stream_in, hls::stream<maxima_out_t>& stream_out) {
     static sample_t max_value[CHANNELS] = {0, 0, 0};
     static index_t current_index = 0;
 
@@ -28,4 +27,13 @@ void findmax(hls::stream<channels_in_t>& stream_in, hls::stream<maxima_out_t>& s
         for (int i = 0; i < CHANNELS; i++)
             max_value[i] = 0.0;
     }
+}
+
+
+void findmax(hls::stream<channels_in_t>& stream_in, hls::stream<maxima_out_t>& stream_out) {
+    #pragma HLS INTERFACE port=return mode=ap_ctrl_none
+    #pragma HLS INTERFACE port=stream_in mode=axis
+    #pragma HLS INTERFACE port=stream_out mode=axis
+
+    hls_thread_local hls::task trun(run, stream_in, stream_out);
 }
