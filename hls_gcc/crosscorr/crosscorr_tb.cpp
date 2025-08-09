@@ -5,8 +5,10 @@
 
 int main()
 {
-  hls::stream<channels_in_t> stream_in;
-  hls::stream<channels_out_t> stream_out;
+  hls::stream<channels_in_t, 4> stream_in;
+  hls::stream<channels_out_t, 4> stream_out;
+
+  crosscorr(stream_in, stream_out);
 
   double sum = 0.0f;
   constexpr int ITERATIONS = 50;
@@ -23,8 +25,6 @@ int main()
     }
 
     stream_in.write(in);
-
-    crosscorr(stream_in, stream_out);
 
     channels_out_t out = stream_out.read();
 

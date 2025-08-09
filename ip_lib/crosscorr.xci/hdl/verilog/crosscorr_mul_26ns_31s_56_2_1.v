@@ -2,7 +2,7 @@
 
 `timescale 1 ns / 1 ps
 
- module crosscorr_mul_31s_26ns_56_2_1(clk,ce,reset,din0, din1, dout);
+ module crosscorr_mul_26ns_31s_56_2_1(clk,ce,reset,din0, din1, dout);
 parameter ID = 1;
 parameter NUM_STAGE = 0;
 parameter din0_WIDTH = 14;
@@ -45,8 +45,8 @@ reg signed [dout_WIDTH - 1 : 0] buff0;
 
 
 
+assign tmp_product = $signed({1'b0, din0}) * $signed(din1);
 
-assign tmp_product = $signed(din0) * $signed({1'b0, din1});
 
 
 
