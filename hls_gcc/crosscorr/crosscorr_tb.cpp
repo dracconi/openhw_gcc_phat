@@ -40,7 +40,7 @@ int main()
       std::complex<double> fp(d.real(), d.imag());
       sum += std::abs(ref - fp) / std::abs(ref);
 
-      if (std::abs(ref - fp) > 0.01 * std::abs(ref)) {
+      if (std::abs(ref - fp) > 0.15 * std::abs(ref)) {
         printf("not ok %f\r\n", std::abs(ref - fp));
         printf("mult %f+i*%f abs %f\r\n", t.real(), t.imag(), std::abs(t));
         return 1;

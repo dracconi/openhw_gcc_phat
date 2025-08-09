@@ -3,7 +3,7 @@
 #include <hls_task.h>
 #include <hls_x_complex.h>
 
-typedef hls::x_complex<ap_fixed<32, 8>> int_complex_t;
+typedef hls::x_complex<ap_fixed<20, 4>> int_complex_t;
 
 int_complex_t cabs(complex_t a) {
   return int_complex_t(hls::sqrt(a.real()*a.real() + a.imag()*a.imag()));
