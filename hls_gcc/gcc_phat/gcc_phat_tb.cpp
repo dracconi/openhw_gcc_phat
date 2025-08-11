@@ -9,8 +9,7 @@
 
 using sample = double;
 
-sample raw[NFFT];
-sample test[NFFT];
+sample data[CHANNELS][NFFT];
 
 bool load_fn(const char* fn, sample* base) {
   FILE* fp = fopen(fn, "rb");
@@ -26,8 +25,10 @@ int main() {
 
   gcc_phat(stream_in, stream_out);
 
-  load_fn("pcm/golden_ref.pcm", &raw[0]);
-  load_fn("pcm/golden_200.pcm", &test[0]);
+  load_fn("pcm/golden_ref.pcm", &data[0][0]);
+  load_fn("pcm/golden_200.pcm", &data[1][0]);
+  load_fn("pcm/golden_400.pcm", &data[2][0]);
+  load_fn("pcm/golden_410.pcm", &data[3][0]);
 
   for (int i = 0; i < NFFT; i++) {
     in_frame t;
@@ -35,7 +36,7 @@ int main() {
     for (int j = 0; j < CHANNELS; j++) {
       double candidate = 0.0;
         
-      candidate = j == 3 ? test[i] : raw[i];
+      candidate = data[j][i];
 
       t.data.sample[j] = candidate;
     }

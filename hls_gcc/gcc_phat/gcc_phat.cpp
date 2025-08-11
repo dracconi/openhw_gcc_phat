@@ -11,10 +11,10 @@
 #include "fxp_sqrt.h"
 
 struct fft_params : hls::ip_fft::params_t {
-  static const unsigned input_width = 16;
-  static const unsigned output_width = 16;
+  static const unsigned input_width = 32;
+  static const unsigned output_width = 32;
   static const unsigned status_width = 8;
-  static const unsigned config_width = 8;
+  static const unsigned config_width = 16;
   static const unsigned max_nfft = 10;
 
   static const bool has_nfft = false;
@@ -38,26 +38,20 @@ struct fft_params : hls::ip_fft::params_t {
 
 using fft_config = hls::ip_fft::config_t<fft_params>;
 using fft_status = hls::ip_fft::status_t<fft_params>;
-using fft_in = std::complex<ap_fixed<16, 1>>;
-using fft_out = std::complex<ap_fixed<16, 1>>;
+using fft_in = std::complex<float>;
+using fft_out = std::complex<float>;
 
 fft_in mult_and_normalize(fft_out ref, fft_out test) {
-  std::complex<ap_fixed<32, 8>> mul = test * std::conj(ref);
+  std::complex<float> mul = test * std::conj(ref);
 
-  ap_ufixed<32, 8> abs;
-
-  ap_ufixed<32, 8> square = mul.real() * mul.real() + mul.imag() * mul.imag();
-
-  fxp_sqrt(abs, square);
-
-  abs = abs;
+  float abs = hls::sqrt(mul.real() * mul.real() + mul.imag() * mul.imag());
 
 #ifndef __SYNTHESIS__
   printf("mult: %f %fi ", float(mul.real()), float(mul.imag()));
   printf("abs: %f\r\n", float(abs));
 #endif
   
-  if (abs == 0.0)
+  if (abs == 0.0f)
     return fft_in(0);
     
   return fft_in(mul.real() / abs, mul.imag() / abs);
@@ -65,7 +59,7 @@ fft_in mult_and_normalize(fft_out ref, fft_out test) {
 
 void load(in_sample src[NFFT], hls::stream<fft_in>& dst) {
   for (int i = 0; i < NFFT; i++) {
-    dst.write(fft_in(src[i]));
+    dst.write(fft_in(float(src[i])));
   }
 }
 
