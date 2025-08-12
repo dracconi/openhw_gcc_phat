@@ -14,7 +14,7 @@ struct fft_params : hls::ip_fft::params_t {
   static const unsigned input_width = 32;
   static const unsigned output_width = 32;
   static const unsigned status_width = 8;
-  static const unsigned config_width = 16;
+  static const unsigned config_width = 8;
   static const unsigned max_nfft = 10;
 
   static const bool has_nfft = false;
@@ -38,11 +38,14 @@ struct fft_params : hls::ip_fft::params_t {
 
 using fft_config = hls::ip_fft::config_t<fft_params>;
 using fft_status = hls::ip_fft::status_t<fft_params>;
-using fft_in = std::complex<float>;
-using fft_out = std::complex<float>;
+using fft_in = std::complex<ap_fixed<32, 1>>;
+using fft_out = std::complex<ap_fixed<32, 1>>;
 
 fft_in mult_and_normalize(fft_out ref, fft_out test) {
-  std::complex<float> mul = test * std::conj(ref);
+  std::complex<float> f_ref(ref.real(), ref.imag());
+  std::complex<float> f_test(test.real(), test.imag());
+  
+  std::complex<float> mul = f_test * std::conj(f_ref);
 
   float abs = hls::sqrt(mul.real() * mul.real() + mul.imag() * mul.imag());
 

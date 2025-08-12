@@ -1,0 +1,13 @@
+{
+  "name": "gcc_phat",
+  "type": "HLS",
+  "configuration": {
+    "componentType": "HLS",
+    "configFiles": [
+      "hls_config.cfg"
+    ],
+    "work_dir": "gcc_phat"
+  },
+  "useSysrootToolchain": false,
+  "template": "empty_hls_component"
+}
