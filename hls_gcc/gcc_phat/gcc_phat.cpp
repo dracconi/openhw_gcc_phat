@@ -8,8 +8,6 @@
 
 #include <stdio.h>
 
-#include "fxp_sqrt.h"
-
 struct fft_params : hls::ip_fft::params_t {
   static const unsigned input_width = 32;
   static const unsigned output_width = 32;
@@ -118,7 +116,7 @@ out_delay find_maximum(hls::stream<fft_out>& in) {
     fft_out::value_type tmp = in.read().real();
     if (maximum < tmp) {
       maximum = tmp;
-      index = i;
+      index = (i > NFFT / 2) ? -i : i;
     }
   }
 
