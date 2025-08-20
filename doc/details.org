@@ -13,7 +13,8 @@ This file is divided into multiple sections for each IP core.
 #+end_src
 
 There were some assumptions made during the design phase:
-1. All cores communicate using AXI4-Stream
+1. All cores communicate using AXI4-Stream,
+2. Everything is in the same clock domain.
 
 * Sound Locator
 
@@ -27,6 +28,8 @@ The most basic idea for "how it is supposed to work" is:
    PHAT part)
 3. Based on that, calculate the position in 3D. (TDOA MLAT part)
 
+This is all connected through the Block Design tool available in
+Vivado.
 
 * GCC PHAT core
 
@@ -94,6 +97,15 @@ Speech and Signal Processing
 
 * TDOA MLAT core
 
-
+@Badzej
 
 * UART AXI4-Stream interface
+
+This is the connector for the outside world.
+
+All data on the physical UART ports is forwarded to AXI4-Stream
+without any kind of buffering, so that the data can be streamed into
+the bus easily.
+
+It is supposed to connect to the on-board FTDI USB-UART converter
+chip. 
