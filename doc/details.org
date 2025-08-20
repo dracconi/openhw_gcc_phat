@@ -1,0 +1,99 @@
+# This is an Org mode document, not Markdown.
+
+This is a technical documentation regarding the cores for finding the
+sound (or another wave, technically) source location.
+
+This file is divided into multiple sections for each IP core.
+
+#+begin_src
+  Sound Locator
+  |\- UART AXI4-Stream interface
+  |\- GCC PHAT core
+  \-- TDOA MLAT core
+#+end_src
+
+There were some assumptions made during the design phase:
+1. All cores communicate using AXI4-Stream
+
+* Sound Locator
+
+This is the top level module for our project. It integrates GCC PHAT
+with TDOA MLAT along with the UART interface to feed the data into the
+system.
+
+The most basic idea for "how it is supposed to work" is:
+1. Get 4 streams from 4 microphones.
+2. Get the time different of arrival (TDOA) from the streams. (GCC
+   PHAT part)
+3. Based on that, calculate the position in 3D. (TDOA MLAT part)
+
+
+* GCC PHAT core
+
+The core is made with Vitis HLS.
+
++----------+------+--------------+
+|Interface |I/O   |Details       |
++----------+------+--------------+
+|stream_in |I     |4             |
+|          |(AXIS)|interleaved   |
+|          |      |16-bit mono-  |
+|          |      |audio         |
+|          |      |channels      |
++----------+------+--------------+
+|stream_out|O     |3 16-bit      |
+|          |(AXIS)|(number of    |
+|          |      |samples)      |
+|          |      |delays        |
++----------+------+--------------+
+
+The window for calculation of the GCC PHAT is 1024 samples. This
+yields around 20ms for 44.1kHz sample rate, which should be
+enough. The core completes in around 450us (@100MHz) with those
+settings.
+
+Each time quanta is input through stream_in, as 4 channels, where
+channel 0 is on LSB and channel 3 is on MSB. Channel 0 is treated as a
+reference channel.
+
+The core then calculates the TDOA between reference channel and
+channel 1, 2 and 3. The TDOAs are the output on stream_out, with the
+difference between (ref, ch1) being on LSB, and (ref, ch3) on MSB.
+The difference is specified as a number of samples. The delay is in
+two-complement.
+
+** Implementation
+
+Please refer to [[../hls_gcc/gcc_phat/gcc_phat.cpp]] for the specific
+details.
+
+Each channel is transformed into its spectrum with FFT.
+Then, each pair (channel 0, channel k) where $4>k>0$ of spectra is
+transformed such that:
+
+\[ G_k(f) = F_0^*(f) \cdot F_k(f)  \]
+\[ G_k'(f) = G_k(f) / |G_k(f)| \]
+
+Then $G_k'(f)$ spectrum is transformed with inverse FFT, yielding the
+cross-correlation between the signals. Then the maximum is found in
+the result of IFFT, and the "location", i.e. the sample nunmber (this
+is time domain now, technically), is returned as the delay.
+
+Note that due to FT being periodic, delays appearing in the upper
+part of the window can mean that the delay is "negative", that is,
+that TDOA is negative and the wave appeared at the microphone k before
+the reference microphone.
+
+There is [[../py/golden_gcc.py]] provided, along with some PCM (64-bit
+floats, single channel) sample data, to test the float-only computed
+version and the synthesized IP. 
+
+[1]: Knapp, C. H. and G.C. Carter, “The Generalized Correlation
+Method for Estimation of Time Delay.” IEEE Transactions on Acoustics,
+Speech and Signal Processing
+
+* TDOA MLAT core
+
+
+
+* UART AXI4-Stream interface
