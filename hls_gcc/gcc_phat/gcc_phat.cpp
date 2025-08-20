@@ -128,8 +128,8 @@ void run(hls::stream<in_frame>& in, hls::stream<out_frame>& out) {
   
   fft_out reference[NFFT];
 
-  hls::stream<fft_in, 1024> fft_stream_in;
-  hls::stream<fft_out, 1024> fft_stream_out;
+  hls::stream<fft_in, NFFT> fft_stream_in;
+  hls::stream<fft_out, NFFT> fft_stream_out;
   hls::stream<fft_config, 2> fft_stream_config;
   hls::stream<fft_status, 2> fft_stream_status;
 
