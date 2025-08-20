@@ -1,3 +1,2 @@
 source "../paths.tcl"
-make_package "crosscorr"
-make_package "findmax"
+make_package "gcc_phat"
