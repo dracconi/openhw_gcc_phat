@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module gcc_tb
+module gcc_phat_tb
 #(
     parameter DATA_WIDTH = 64,
     parameter CLK_PERIOD = 10
