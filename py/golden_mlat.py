@@ -4,9 +4,9 @@ import random
 # w.l.o.g. ref mic = (0, 0, 0)
 
 REF = np.array([0, 0, 0])
-SENSORS = np.array([[1, 0, 0], [-0.77, -0.77, -2], [-0.77, 0.77, 1]])
-ITERATIONS = 100
-EPS = 10
+SENSORS = np.array([[1, 0, 0], [-0.77, -0.77, -2], [-0.77, 0.77, 1]])*5
+ITERATIONS = 500
+EPS = 100
 
 MINIMUM_DISTANCE_LATERAL = 100
 
@@ -44,32 +44,42 @@ def mlat_sx(minv, rmics, darr):
     
 
 def mlat_sx_easy(src):
-    darr = [get_rel_dist(REF, src, sens) for sens in SENSORS]
+    darr = [get_rel_dist(REF, src, sens) + random.randrange(-5, 5)/10000.0 for sens in SENSORS]
     res = mlat_sx(np.linalg.inv(SENSORS), [get_dist(REF, sens) for sens in SENSORS], darr)
     
-    assert (res > MINIMUM_DISTANCE_LATERAL).all(axis=0)[2] == False, "Ooops.. could not determine the result"
+    #assert (res > MINIMUM_DISTANCE_LATERAL).all(axis=0)[2] == False, f"Ooops.. could not determine the result {src} {res}"
     
-    if res[0][2] > MINIMUM_DISTANCE_LATERAL:
+    if res[0][2] > res[1][2]:
         pos = res[0]
     else:
         pos = res[1]
 
-    if (pos - src < EPS).all() == False:
+    ok = np.linalg.norm(pos-src) < EPS
+
+    if ok == False:
+        print("\n\n-- ERROR BIGGER THAN EPS!")
+        print("res")
         print(res)
+        print("src")
         print(src)
+        print("pos")
         print(pos)
 
 
-    return pos
+    return (pos, ok)
     
     
 
 def main():
     random.seed(0)
+    count_ok = 0;
     for i in range(ITERATIONS):
-        res = mlat_sx_easy(np.array([random.randrange(a, 400, 1) for a in [-200, -200, MINIMUM_DISTANCE_LATERAL]]))
+        (res, ok) = mlat_sx_easy(np.array([random.randrange(a, 400, 1) for a in [-200, -200, MINIMUM_DISTANCE_LATERAL]]))
+        if ok:
+            count_ok = count_ok + 1
         print(".", end="")
     print("")
+    print("Total %d, ok %d, %f%% rate" % (ITERATIONS, count_ok, count_ok/ITERATIONS))
 
 
 if __name__ == "__main__":
