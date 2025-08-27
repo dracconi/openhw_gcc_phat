@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-08-27 Wed 23:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge6e2401">1. Sound Locator</a></li>
+<li><a href="#orgad78be1">2. GCC PHAT core</a>
+<ul>
+<li><a href="#orgb4687f7">2.1. Implementation</a></li>
+</ul>
+</li>
+<li><a href="#org11f6c39">3. TDOA MLAT core</a></li>
+<li><a href="#org52273ad">4. UART AXI4-Stream interface</a>
+<ul>
+<li><a href="#orgb97096e">4.1. Implementation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+This is a technical documentation regarding the cores for finding the
+sound (or another wave, technically) source location.
+</p>
+
+<p>
+This file is divided into multiple sections for each IP core.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">Sound Locator
+|\- UART AXI4-Stream interface
+|\- GCC PHAT core
+\-- TDOA MLAT core
+</pre>
+</div>
+
+<p>
+There were some assumptions made during the design phase:
+</p>
+<ol class="org-ol">
+<li>All cores communicate using AXI4-Stream,</li>
+<li>Everything is in the same clock domain.</li>
+</ol>
+<div id="outline-container-orge6e2401" class="outline-2">
+<h2 id="orge6e2401"><span class="section-number-2">1.</span> Sound Locator</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This is the top level module for our project. It integrates GCC PHAT
+with TDOA MLAT along with the UART interface to feed the data into the
+system.
+</p>
+
+<p>
+The most basic idea for "how it is supposed to work" is:
+</p>
+<ol class="org-ol">
+<li>Get 4 streams from 4 microphones.</li>
+<li>Get the time different of arrival (TDOA) from the streams. (GCC
+PHAT part)</li>
+<li>Based on that, calculate the position in 3D. (TDOA MLAT part)</li>
+</ol>
+
+<p>
+This is all connected through the Block Design tool available in
+Vivado.
+</p>
+</div>
+</div>
+<div id="outline-container-orgad78be1" class="outline-2">
+<h2 id="orgad78be1"><span class="section-number-2">2.</span> GCC PHAT core</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The core is made with Vitis HLS.
+</p>
+
+<!-- This HTML table template is generated by emacs 30.1 -->
+<table border="1">
+  <tr>
+    <td align="left" valign="top">
+      Interface&nbsp;
+    </td>
+    <td align="left" valign="top">
+      I/O&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      Details&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      stream_in&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      (AXIS)<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      interleaved&nbsp;&nbsp;&nbsp;<br />
+      16-bit&nbsp;mono-&nbsp;&nbsp;<br />
+      audio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      channels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+      stream_out<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      (AXIS)<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+    <td align="left" valign="top">
+      3&nbsp;16-bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      (number&nbsp;of&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      samples)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+      delays&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </td>
+  </tr>
+</table>
+
+<p>
+The window for calculation of the GCC PHAT is 1024 samples. This
+yields around 20ms for 44.1kHz sample rate, which should be
+enough. The core completes in around 450us (@100MHz) with those
+settings.
+</p>
+
+<p>
+Each time quanta is input through stream<sub>in</sub>, as 4 channels, where
+channel 0 is on LSB and channel 3 is on MSB. Channel 0 is treated as a
+reference channel.
+</p>
+
+<p>
+The core then calculates the TDOA between reference channel and
+channel 1, 2 and 3. The TDOAs are the output on stream<sub>out</sub>, with the
+difference between (ref, ch1) being on LSB, and (ref, ch3) on MSB.
+The difference is specified as a number of samples. The delay is in
+two-complement.
+</p>
+</div>
+<div id="outline-container-orgb4687f7" class="outline-3">
+<h3 id="orgb4687f7"><span class="section-number-3">2.1.</span> Implementation</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Please refer to <a href="../hls_gcc/gcc_phat/gcc_phat.cpp">../hls_gcc/gcc_phat/gcc_phat.cpp</a> for the specific
+details.
+</p>
+
+<p>
+Each channel is transformed into its spectrum with FFT.
+Then, each pair (channel 0, channel k) where \(4>k>0\) of spectra is
+transformed such that:
+</p>
+
+<p>
+\[ G_k(f) = F_0^*(f) \cdot F_k(f)  \]
+\[ G_k'(f) = G_k(f) / |G_k(f)| \]
+</p>
+
+<p>
+Then \(G_k'(f)\) spectrum is transformed with inverse FFT, yielding the
+cross-correlation between the signals. Then the maximum is found in
+the result of IFFT, and the "location", i.e. the sample nunmber (this
+is time domain now, technically), is returned as the delay.
+</p>
+
+<p>
+Note that due to FT being periodic, delays appearing in the upper
+part of the window can mean that the delay is "negative", that is,
+that TDOA is negative and the wave appeared at the microphone k before
+the reference microphone.
+</p>
+
+<p>
+There is <a href="../py/golden_gcc.py">../py/golden_gcc.py</a> provided, along with some PCM (64-bit
+floats, single channel) sample data, to test the float-only computed
+version and the synthesized IP. 
+</p>
+
+<p>
+[1]: Knapp, C. H. and Carter, G.C., ``The Generalized Correlation
+Method for Estimation of Time Delay.'' IEEE Transactions on Acoustics,
+Speech and Signal Processing
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org11f6c39" class="outline-2">
+<h2 id="org11f6c39"><span class="section-number-2">3.</span> TDOA MLAT core</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+@Badzej
+</p>
+
+<p>
+The implemented pseudo-multilateration method is the one shown in [2],
+which is has a closed-form solution and is relatively easy to
+implement (see <a href="../py/golden_mlat.py">../py/golden_mlat.py</a> for reference), as it involves
+matrix multiplication and some simple algebraic transformations.
+</p>
+
+<p>
+Unfortunately, there are two results for each set of delays. This is
+not addressed in the core. The implementer <span class="underline">has</span> to provide their own
+method of choosing the correct result (for example through comparing
+subsequent results). 
+</p>
+
+<p>
+[2]: Schau, H. and Robinson, A., ``Passive source localization
+employing intersecting spherical surfaces from time-of-arrival
+differences'' IEEE Transactions on Acoustics, Speech, and Signal
+Processing
+</p>
+</div>
+</div>
+<div id="outline-container-org52273ad" class="outline-2">
+<h2 id="org52273ad"><span class="section-number-2">4.</span> UART AXI4-Stream interface</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+This is the connector for the outside world.
+</p>
+
+<p>
+All data on the physical UART ports is forwarded to AXI4-Stream
+without any kind of buffering, so that the data can be streamed into
+the bus easily.
+</p>
+
+<p>
+It is supposed to connect to the on-board FTDI USB-UART converter
+chip, which (supposedly) supports up to 3Mbaud.
+</p>
+
+<p>
+The interface is just placed in the design, along with some width
+converters.
+</p>
+</div>
+<div id="outline-container-orgb97096e" class="outline-3">
+<h3 id="orgb97096e"><span class="section-number-3">4.1.</span> Implementation</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+FTDI chip gives nicely formatted UART signals. The IP core performs
+the division of the main clock (100MHz/33) to get ~3.03MHz, which is
+within 1% of the 3Mbaud. There are two state machines and two clock
+dividers, one for Rx and one for Tx side. They connect directly to
+AXI4-Stream with no buffering and no checking.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2025-08-27 Wed 23:34</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
