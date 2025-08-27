@@ -131,7 +131,7 @@ without any kind of buffering, so that the data can be streamed into
 the bus easily.
 
 It is supposed to connect to the on-board FTDI USB-UART converter
-chip, which (supposedly) supports up to 3Mbaud.
+chip, which supports up to 3Mbaud.
 
 The interface is just placed in the design, along with some width
 converters.
