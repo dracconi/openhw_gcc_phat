@@ -10,9 +10,15 @@ def gccphat(ref, test):
     r = np.fft.fft(ref)
     t = np.fft.fft(test)
     n = np.conjugate(r) * t
-    n = n / abs(n)
+    if np.any(abs(n) == 0):
+        n = np.zeros_like(n)
+    else:
+        n = n / abs(n)
     res = np.real(np.fft.ifft(n))
-    return np.nonzero(max(res) == res)[0][0]
+    test = np.nonzero(max(res) == res)
+    if len(test[0]) > 0:
+        return test[0][0]
+    return 0
 
 if __name__=="__main__":
     arrays = []
@@ -25,7 +31,10 @@ if __name__=="__main__":
         f_ref = np.fft.fft(ref)
         f_test = np.fft.fft(test)
         f_renorm = np.conjugate(f_ref) * f_test
-        f_renorm = f_renorm / abs(f_renorm)
+        if (abs(f_renorm) != 0):
+            f_renorm = f_renorm / abs(f_renorm)
+        else:
+            f_renorm = 0.0
         renorm = np.real(np.fft.ifft(f_renorm))
         delay = np.nonzero(max(renorm) == renorm)[0][0]
         print("Ok. ref=%d out=%d" % (delay_ref, delay))

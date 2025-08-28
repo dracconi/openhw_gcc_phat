@@ -4,9 +4,9 @@ import random
 # w.l.o.g. ref mic = (0, 0, 0)
 
 REF = np.array([0, 0, 0])
-SENSORS = np.array([[1, 0, 0], [-0.77, -0.77, -0.5], [-0.77, 0.77, 1]])*10
+SENSORS = np.array([[10, 0, 0], [-7, -7, -5], [-7, 7, 10]])
 ITERATIONS = 500
-EPS = 10
+EPS = 50
 
 MINIMUM_DISTANCE_LATERAL = 100
 CENTER_DISTANCE = 300
@@ -91,4 +91,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    print("inverse")
+    print(np.linalg.inv(SENSORS))
+    print([get_dist(REF, a) for a in SENSORS])
+#    main()

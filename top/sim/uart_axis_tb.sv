@@ -13,7 +13,7 @@ module uart_axis_tb
    reg                       rx;
    wire                      tx;
    reg                       aclk;
-   reg                       arst;
+   reg                       arstn;
    
 
    uart_axis dut(s_data_tdata,
@@ -25,14 +25,14 @@ module uart_axis_tb
                  rx,
                  tx,
                  aclk,
-                 arst);
+                 arstn);
 
    initial begin
       m_data_tready <= 1'b1;
       rx <= 1'b1;
       aclk <= 1'b0;
-      arst <= 1'b1;
-      #50 arst <= 1'b0;
+      arstn <= 1'b0;
+      #50 arstn <= 1'b1;
    end
 
    always begin
@@ -51,7 +51,7 @@ module uart_axis_tb
       #1000 rx = 1'b0; // 7
       #1000 rx = 1'b1; // STOP
       
-      #1010 rx = 1'b0; // START
+      #1000 rx = 1'b0; // START
       #1000 rx = 1'b0; // 0
       #1000 rx = 1'b0; // 1
       #1000 rx = 1'b1; // 2

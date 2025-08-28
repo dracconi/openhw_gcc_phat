@@ -1,0 +1,26 @@
+[
+  {
+    "directory": "/home/mjk/repos/AMD_Open_HW/hls_gcc/tdoa_mlat",
+    "arguments": [
+      "/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/tps/lnx64/gcc-8.3.0",
+      "-fhls",
+      "-hls-syn-headers-dir=/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/common/technology/autopilot",
+      "-c",
+      "/home/mjk/repos/AMD_Open_HW/hls_gcc/tdoa_mlat/tdoa_mlat.cpp"
+    ],
+    "file": "/home/mjk/repos/AMD_Open_HW/hls_gcc/tdoa_mlat/tdoa_mlat.cpp"
+  },
+  {
+    "directory": "/home/mjk/repos/AMD_Open_HW/hls_gcc/tdoa_mlat",
+    "arguments": [
+      "/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/vcxx/libexec/clang++",
+      "--gcc-toolchain=/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/tps/lnx64/gcc-8.3.0",
+      "-fhls-tb",
+      "-hls-sim-headers-dir=/home/mjk/repos/AMD_Open_HW/xilinx/2025.1/Vitis/include",
+      "-c",
+      "/home/mjk/repos/AMD_Open_HW/hls_gcc/tdoa_mlat/tdoa_mlat_tb.cpp"
+    ],
+    "file": "/home/mjk/repos/AMD_Open_HW/hls_gcc/tdoa_mlat/tdoa_mlat_tb.cpp"
+  }
+]
