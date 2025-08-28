@@ -6,6 +6,14 @@ def get_samples(base, offset=0, initial=1024, sz=1024):
     start = initial - offset;
     return base[start:start+sz]
 
+def gccphat(ref, test):
+    r = np.fft.fft(ref)
+    t = np.fft.fft(test)
+    n = np.conjugate(r) * t
+    n = n / abs(n)
+    res = np.real(np.fft.ifft(n))
+    return np.nonzero(max(res) == res)[0][0]
+
 if __name__=="__main__":
     arrays = []
     data = np.fromfile("samples.pcm", dtype=np.float64)
