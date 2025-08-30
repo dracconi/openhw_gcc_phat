@@ -116,11 +116,7 @@ out_delay find_maximum(hls::stream<fft_out>& in) {
     fft_out::value_type tmp = in.read().real();
     if (maximum < tmp) {
       maximum = tmp;
-      if (i > NFFT / 2) {
-        index = ap_int<18>(i) - ap_int<18>(NFFT);
-      } else {
-        index = ap_int<18>(i);
-      }
+      index = i;
     }
   }
 

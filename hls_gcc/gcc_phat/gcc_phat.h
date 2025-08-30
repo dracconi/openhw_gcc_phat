@@ -4,7 +4,7 @@
 
 constexpr int CHANNELS = 4;
 constexpr int DELAYS = CHANNELS - 1;
-constexpr unsigned short NFFT = 1024;
+constexpr int NFFT = 1024;
 
 using in_sample = ap_fixed<16, 1>;
 

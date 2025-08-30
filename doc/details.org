@@ -10,34 +10,12 @@ This file is divided into multiple sections for each IP core.
 #+begin_src
   Sound Locator
   |\- UART AXI4-Stream interface
-  |\- GCC PHAT core
-  \-- TDOA MLAT core
+  \- GCC PHAT core
 #+end_src
 
 There were some assumptions made during the design phase:
 1. All cores communicate using AXI4-Stream,
 2. Everything is in the same clock domain.
-
-* Sound Locator
-
-This is the top level module for our project. It integrates GCC PHAT
-with TDOA MLAT along with the UART interface to feed the data into the
-system.
-
-The most basic idea for "how it is supposed to work" is:
-1. Get 4 streams from 4 microphones.
-2. Get the time different of arrival (TDOA) from the streams. (GCC
-   PHAT part)
-3. Based on that, calculate the position in 3D. (TDOA MLAT part)
-
-This is all connected through the Block Design tool available in
-Vivado.
-
-Due to the prototype nature of the design, there is no CRC or
-any other verification implemented in the UART communication path.
-We assume that the communication is correct, especially that the
-problematic section is just the traces on the PCB, i.e. there is no
-UART outside of the board.
 
 * GCC PHAT core
 
@@ -102,25 +80,6 @@ version and the synthesized IP.
 [1]: Knapp, C. H. and Carter, G.C., ``The Generalized Correlation
 Method for Estimation of Time Delay.'' IEEE Transactions on Acoustics,
 Speech and Signal Processing
-
-* TDOA MLAT core
-
-@Badzej
-
-The implemented pseudo-multilateration method is the one shown in [2],
-which is has a closed-form solution and is relatively easy to
-implement (see [[../py/golden_mlat.py]] for reference), as it involves
-matrix multiplication and some simple algebraic transformations.
-
-Unfortunately, there are two results for each set of delays. This is
-not addressed in the core. The implementer _has_ to provide their own
-method of choosing the correct result (for example through comparing
-subsequent results). 
-
-[2]: Schau, H. and Robinson, A., ``Passive source localization
-employing intersecting spherical surfaces from time-of-arrival
-differences'' IEEE Transactions on Acoustics, Speech, and Signal
-Processing
 
 * UART AXI4-Stream interface
 
