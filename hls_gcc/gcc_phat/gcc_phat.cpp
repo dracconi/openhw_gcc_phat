@@ -116,7 +116,8 @@ out_delay find_maximum(hls::stream<fft_out>& in) {
     fft_out::value_type tmp = in.read().real();
     if (maximum < tmp) {
       maximum = tmp;
-      index = (i > NFFT / 2) ? -i : i;
+      index = i;
+      index = (i > NFFT / 2) ? out_delay(index - NFFT) : index;
     }
   }
 
@@ -166,16 +167,6 @@ void run(hls::stream<in_frame>& in, hls::stream<out_frame>& out) {
   }
 
   out.write(delays);
-}
-
-void split_wrap(hls::stream<in_frame>& in,
-                hls::stream<in_sample> split[CHANNELS]) {
-  in_frame frame = in.read();
-
-  for (int i = 0; i < CHANNELS; i++) {
-#pragma HLS UNROLL
-    split[i].write(frame.data.sample[i]);
-  }
 }
 
 void gcc_phat(hls::stream<in_frame>& stream_in,

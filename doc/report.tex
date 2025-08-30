@@ -1,12 +1,13 @@
 \documentclass[a4paper,twocolumn]{article}
 
-\title{Accelerating the locating of a sound source}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Accelerating the Generalized Cross Correlation through Vitis HLS}
 \date{Summer 2025}
 
 \author{
   Malina, Kacper
-  \and
-  Styrnol, Blazej
 }
 
 \begin{document}
@@ -14,103 +15,134 @@
 
 \section{Introduction}
 
-As an attempt to accelerate computation of the sound source location,
-we have implemented a combination of two algorithms that are often
-used together. First algorithm is
-GCC-PHAT, which is used for finding the delay between the same sound
-arriving at two different microphones. The second one, hereafter
-called TDOA-MLAT, is an algorithm for finding the cooridnates of the
-source based on the delays given by GCC-PHAT. Note that both
-algorithms could be used in other applications, such as radars or
-other tasks that involve locating a source of waves, for example
-electromagnetic waves.
+Algorithms that are used in the location of the source of
+some traveling waves, such as sound or EM, usually involve splitting
+the problem into two: first finding the delays between the same wave
+arriving at different sensors, then using mathematical transformations
+to calculate (or guess) the position of the source based on those
+delays\cite{tdoamlat}. This project is concerned with accelerating the
+first step, that is finding the delays, or time differences of
+arrivals, TDOA for short.
 
-Since the IP cores themselves only have AXI4-Stream interfaces and
-would not be able to communicate with the outside world by themselves,
-additional core was prepared. The module that bridges UART to
-AXI4-Stream was prepared as a separate entity, so that it can be
-reused.
+One of the methods (and a pretty common one) is the Generalized Cross
+Correlation, hereafter called GCC\cite{gccphat}. The specific method
+that will be considered here is called GCC-PHAT, where PHAT means
+Phase Transform. It is a type of normalization applied in the
+calculation. The IP core described here could easily be adapted for
+other, similar, types of normalization, or it could be turned off
+completely.
 
-\section{Golden References}
+This paper focuses on the implementation of GCC-PHAT on an FPGA. To
+enable easy integration with other cores, all the interfaces used are
+AXI4-Stream\cite{axis}, shortened to AXIS. To ease the prototyping, a
+UART-AXIS bridge is also provided in the project.
 
-The main focus was on the implementation of the algorithms, and not on
-the reliability of the algorithms themselves. After trial
-implementations in Python (see \texttt{py/} in repo), it became
-apparent that the algorithms are not perfect and are prone to errors.
+\section{Method}
 
-Since this project was not concerned with checking the algorithms
-themselves, it was not evaluated thoroughly.
+The core supports multiple channels (default 4) to yield multiple
+delays (number of channels less 1). Each channel is has its delay
+calculated w.r.t. the reference channel 0. It involves performing the
+GCC 3 times, one for each non-reference channel.
 
-It has to be noted, that GCC-PHAT is correct most of the time, but
-sometimes (around $10\%$)fails. This problem can probably be fixed
-with the extension of the Fourier transform length.
+Lets assume that there are $k$ channels $x_k$, and w.l.o.g. channel
+$x_0$ is the reference channel. Fourier transform (FT) is
+$\mathfrak F$ and inverse FT is $\mathfrak F^{-1}$. A channel is
+fixed-length time-domain signal, with the default length being
+1024 samples in the core. This is also denoted here with $\tau$.
 
-The TDOA-MLAT algorithm reliability depends a lot on the input delays
-noise, the accepted error in the result and the microphone array setup
-(the distances between them). Depending on these factors, it can
-either be correct $>90\%$ times, or fail with $<10\%$ pass-rate.
+Firstly, do FT on all channels
+\[x_k \xrightarrow{\mathfrak F} X_k\]
+Note that $X_k$ are complex signals.
+Then the cross-correlation is performed
+\[Y_k = X_k \cdot X_0^*, k > 0\]
+Then the values are normalized (the -PHAT part)
+\[Y_k' = Y_k / |Y_k|, k > 0\]
+Lastly, perform inverse FT,
+\[Y_k' \xrightarrow{\mathfrak F^{-1}} y_k', k > 0\]
+The time coordinate $t_k$ of the maximum $\mathrm{max}(y_k'), k > 0$
+is the delay between channels 0 (reference) and $k$.
+Note that FT works on periodic signals, thus $t_k$ is periodic, with
+period $\tau$, and $t_k = t_k + n\tau, n\in\mathbb{Z}$. More obvious
+result of that is that, if $t_k > \tau / 2$, it means that $t_k$ might
+actually be negative, with value $t_k = t_k - \tau$. This is how the
+core handles it as well.
+
+The Python script, which implements this directly, as a reference, is
+provided in \texttt{/py/golden\_gcc.py} in the repository.
 
 \section{Implementation}
 
-All logic is clocked with the 100MHz clock available on the devboard,
-thus all latencies and IPs are generated for that clock
-constraint.
+For the implementation of that method, Vitis HLS was chosen, as it is
+relatively easy and quick to get all the math operations synthesized.
 
-The cores were implemented on the following hardware:
-\begin{itemize}
-\item Spartan-7 \texttt{XC7S50} on RealDigital's Urbana\cite{urbana}
-\end{itemize}
+The method has been directly translated from the above description
+into C++. Please see \texttt{/hls\_gcc/gcc\_phat/gcc\_phat.cpp} for
+more details. The sample width on the input was selected to be
+fixed-point 16-bit, although it does get expanded in the calculations
+to 32-bit fixed-point and 32-bit float. This is done to conserve the
+BRAM used for storing the results in between. The output has been
+selected as 16-bit signed integer, which fully contains the possible
+output of GCC PHAT, given that the FFT Logicore IP\cite{xfft} allows a
+maximum of $2^{16}$ for the FFT length.
 
-\subsection{GCC-PHAT}
+The core is implemented with AXIS input and output streams and no
+further control, that is this is a data-driven IP core. 
 
-The algorithm was completely implemented with Vitis HLS tooling
-available from AMD, based on the paper by Knapp and
-Carter\cite{gccphat}. The implementation details are available in in
-\texttt{doc/details.org}.
+The reported latency, with the default settings, post-synthesis
+in Vitis is 350 $\mu$s. The part selected for implementation is
+XC7S50CSGA324-1, available on the RealDigital Urbana devboard.
+This is a single-clock design, with the clock being 100MHz.
 
-Post-synthesis latency in Vitis is reported to be around $350\mu$s for
-the transform length of 1024 and 4 16-bit input channels, which yields
-around 190Mbps of theoretical throughput. To test the core at this
-data rate, 1Gbps Ethernet core could be utilized, but this was
-unfeasible for this project. For regular sound recording, usually
-44.1kHz is enough, which means that the window of 1024 samples is
-$1024 / 44.1\mathrm{kHz} \approx 23\mathrm{ms}$ long. The core only
-needs less than 1/65th of that window for processing. There is thus
-relatively much time to do other processing. Another alternative would
-be to decrease the clock frequency for energy saving.
+\begin{tabular}{r|l|l|l|l}
+  Stage & BRAM & DSP & FF & LUT \\
+  Vitis & 23 & 24 & 26.5k & 22.5k \\
+  Synth. & 11.5 & 72 & 17k & 14k \\
+  Impl. & 12 & 72 & 18.5k & 13.5k \\
+  Use\% & 16\% & 60\% & 28\% & 42\%
+\end{tabular}
 
-The results show that it does use considerable amount of resources,
-which the report lists at 26k flip-flops and 22k LUTs, which is around
-$30\%$ of the utilization of the Spartan-7 populated on Urbana board
-used for development. There also is plenty of BRAM used for FIFOs.
+Note that the values reported for Implementation include UART-AXIS
+bridge and 2 Data Width converters, each of which reports around 40
+LUT and 60 FF post-synthesis. The reported power is 422mW. Last row
+\emph{Use\%}, reports the \% use w.r.t. total available resources on
+the FPGA, post-implementation.
 
-It could be useful to use the external RAM for some buffers,
-especially for ones that wait for computation to complete. The initial
-attempt was performed with \emph{two, multichannel} FFT LOGICORE IP
-cores, but it did not fit on the chip. The current approach uses just
-one FFT instance, and now there is a lot of data that waits in fast
-BRAM, especially the 4 16-bit input channels (16kbits), and the intermediate
-result from the reference channel forward FT.
+All the strategies and settings not mentioned above are set as
+default. The design was connected with Block Design tool.
 
-\subsection{TDOA-MLAT}
+\section{UART-AXIS bridge}
 
-This algorithm was also implemented completely with Vitis HLS tooling,
-based on paper by Schau and Robinson\cite{tdoamlat}. Details are
-available in the aforementioned ORG file.
+To allow writing (and reading) data to (and from) the core, special
+UART-AXIS bridge was prepared. The implementation is available in the
+repository, with the filename \texttt{uart\_axis.v}. It directly
+divides the 100MHz clock by 33 (on default) to get 3.03MHz and
+allow for 3Mbaud UART communication. It is within 1\% of the required
+frequency.
+
+Since the specific use-case is that the UART communication takes place
+on a short on-board trace, that is, between the FTDI chip on Urbana
+and the FPGA chip, 3Mbaud communication works correctly. Due to that,
+and the demo conditions, no checksum checking core has been devised
+here. That is, in this configuration, all UART data is directly
+injected into the AXIS interface, and vice-versa on the reading side.
+There is no FIFOs implemented, and failure to read the data results in
+its loss. However, since UART communication is \emph{much} slower
+(300kB/s) than the FPGA and all the interfaces, this is unlikely to
+happen here.
+
+The USB part of the USB-UART FTDI chip unfortunately has latency that
+does not allow for low-latency ping-pongs between the core and the
+computer. It has not been implemented here, as this only serves as a
+demo, but additional FIFOs would be required to actually stream data
+through this interface. It works good enough for debugging and demo
+purposes, though.
+
+\section{Results}
 
 
-...
 
-\subsection{UART bridge}
+\section{Conclusions}
 
-The bridge was implemented by hand in Verilog, with two test benches
-in System-Verilog. The design details are in the ORG file as well.
-
-The module was tested with the on-board FTDI 2232HQ chip and regular
-\texttt{picocom}. It successfully worked with 3M baud-rate in the
-in-situ loop-back configuration. The testing loop-back was realized
-using the Data FIFO IP core with AXI4-Stream interface, included with
-Vivado.
 
 \begin{thebibliography}{9}
 \bibitem{gccphat}
@@ -135,6 +167,9 @@ Vivado.
 
 \bibitem{vivado}
   AMD \emph{Vivado Design Suite Tcl Command Reference Guide} UG835
+
+\bibitem{axis}
+  ARM \emph{AMBA AXI-Stream Protocol Specification}
   
 \end{thebibliography}
 
