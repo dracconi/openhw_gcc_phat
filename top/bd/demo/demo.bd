@@ -6,7 +6,8 @@
       "name": "demo",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2025.1"
+      "tool_version": "2025.1",
+      "validated": "true"
     },
     "design_tree": {
       "uart_axis_0": "",
@@ -18,12 +19,22 @@
     "ports": {
       "rx": {
         "type": "data",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
       },
       "rstn": {
         "type": "rst",
         "direction": "I",
         "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
           "POLARITY": {
             "value": "ACTIVE_LOW"
           }
@@ -31,7 +42,13 @@
       },
       "tx": {
         "type": "data",
-        "direction": "O"
+        "direction": "O",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
       },
       "clk": {
         "type": "clk",
@@ -40,8 +57,24 @@
           "ASSOCIATED_RESET": {
             "value": "rstn"
           },
+          "CLK_DOMAIN": {
+            "value": "demo_clk",
+            "value_src": "default"
+          },
           "FREQ_HZ": {
             "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
           }
         }
       }
@@ -106,7 +139,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "20000000",
+                "value": "100000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -173,7 +206,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "20000000",
+                "value": "100000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -205,7 +238,13 @@
         },
         "ports": {
           "rx": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "undef",
+                "value_src": "default_prop"
+              }
+            }
           },
           "tx": {
             "direction": "O"
@@ -219,7 +258,7 @@
                 "value_src": "constant"
               },
               "FREQ_HZ": {
-                "value": "20000000",
+                "value": "100000000",
                 "value_src": "ip_prop"
               },
               "PHASE": {
@@ -233,7 +272,13 @@
             }
           },
           "arstn": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "user_prop"
+              }
+            }
           }
         }
       },
