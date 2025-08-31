@@ -15,4 +15,4 @@ Instead of full synth+impl, you can just download the bitstream from the Release
 7. Program the FPGA.
 8. Go to `py/`. You need `numpy` and `pyserial` packages.
 9. Assert and deassert reset (on Urbana connected to SW0). Deasserted reset is when the switch is near the LED.
-10. `python connect.py` for the demo.
+10. `python connect.py` for the demo. You might need to update the port `/dev/ttyUSB...` to match your setup. Check `dmesg` for where the port is. On Windows its usually `COM...` where `...` are numbers in both cases.
