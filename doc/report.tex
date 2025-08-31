@@ -3,8 +3,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\title{Accelerating the Generalized Cross Correlation through Vitis HLS}
-\date{Summer 2025}
+\title{Low-Latency Sound Source Localization: Accelerating the Generalized Cross Correlation through Vitis HLS}
+\date{Summer 2025 (AOHW25\_447)}
 
 \author{
   Malina, Kacper
@@ -64,8 +64,7 @@ is the delay between channels 0 (reference) and $k$.
 Note that FT works on periodic signals, thus $t_k$ is periodic, with
 period $\tau$, and $t_k = t_k + n\tau, n\in\mathbb{Z}$. More obvious
 result of that is that, if $t_k > \tau / 2$, it means that $t_k$ might
-actually be negative, with value $t_k = t_k - \tau$. This is how the
-core handles it as well.
+actually be negative, with value $t_k = t_k - \tau$.
 
 The Python script, which implements this directly, as a reference, is
 provided in \texttt{/py/golden\_gcc.py} in the repository.
@@ -98,7 +97,7 @@ This is a single-clock design, with the clock being 100MHz.
   Vitis & 23 & 24 & 26.5k & 22.5k \\
   Synth. & 11.5 & 72 & 17k & 14k \\
   Impl. & 11.5 & 72 & 16.5k & 12.5k \\
-  Use\% & 16\% & 60\% & 28\% & 42\%
+  Use\% & 15\% & 60\% & 25\% & 39\%
 \end{tabular}
 
 Note that the values reported for Implementation include UART-AXIS
@@ -137,12 +136,63 @@ demo, but additional FIFOs would be required to actually stream data
 through this interface. It works good enough for debugging and demo
 purposes, though.
 
+In place of the UART-AXIS bridge, Ethernet-AXIS bridge was
+considered. Especially that the most basic Ethernet interface supports
+much higher data rates than UART does. If the whole setup would be
+used in production, then definitely UART is not a good fit, as even
+300kB/s is too little to keep up with live sound streams. For this
+setup, $2 \cdot 44100 \cdot 4 = 352.8\mathrm{kB/s}$ would be required
+at minimum to consistently stream the live audio data into the chip.
+
 \section{Results}
 
+For the purposes of testing the core, it was placed on the FPGA with
+the UART-AXIS bridge. Data was sent through the on-board FTDI chip
+with the Python script \texttt{/py/connect.py}. The results were
+automatically compared with the reference implementation.
 
+The Python script loads the samples from a file and then offsets them
+according to the requested delay.
+Random variable with range $[-0.1,  0.1]$ is added to each sample to
+simulate noise. The design has its reset deasserted just before
+running the script. Since there is no checksum implemented, any kind
+of inconsistency on the UART lines can make the results
+fail. This especially happens when the FTDI chip deasserts the lines
+for a longer period.
+
+A run is considered inconsistent if any of the 3 delays does not equal
+with the reference result \emph{and} the reference is equal to the
+theoretical result. The results are consistent with the reference
+around 99.5\% of the time if the above conditions are used. The noise
+does not matter w.r.t. consistency.
+
+It also became apparent that a proper clock source is required, so
+MCMM was used through the Clocking Wizard. Otherwise there are some
+hold slack issues in the FFT core.  The design could also be further
+optimized by removing some of the FIFOs depth, especially on the
+stream\_in port. Unfortunately, cosimulation with generated RTL has
+(documented) issues when using the selected Data-Driven Control
+scheme, so the iteration time for simulating the RTL is much longer
+and it was simply not feasible to experiment with that further. Using
+a more programmatic approach to simulating the resultant IP core could
+be something to consider in the future -- perhaps using Verilator to
+mock the core post-synthesis in Vitis would be a good option.
 
 \section{Conclusions}
 
+The core for accelerating the calculation of the sound source location
+was created. It was tested in demo conditions with results, that are
+consistent with the ``perfect'' algorithm running on a PC.
+
+Even though systems for High Level Synthesis can be difficult to start
+working with, compared with regular writing of RTL, they speed up the
+work a lot. This is especially true when one performs a lot of math
+computations and data moving.
+
+The project result is not a production-grade core, but rather a demo
+that serves as an example. It could obviously be integrated with more
+cores to create a complete pipeline, but that might require optimizing
+the core a bit.
 
 \begin{thebibliography}{9}
 \bibitem{gccphat}
