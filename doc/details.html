@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-27 Wed 23:34 -->
+<!-- 2025-08-31 Sun 13:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -231,16 +231,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge6e2401">1. Sound Locator</a></li>
-<li><a href="#orgad78be1">2. GCC PHAT core</a>
+<li><a href="#orgb6b9379">1. GCC PHAT core</a>
 <ul>
-<li><a href="#orgb4687f7">2.1. Implementation</a></li>
+<li><a href="#org694f2ff">1.1. Implementation</a></li>
 </ul>
 </li>
-<li><a href="#org11f6c39">3. TDOA MLAT core</a></li>
-<li><a href="#org52273ad">4. UART AXI4-Stream interface</a>
+<li><a href="#orgf706639">2. UART AXI4-Stream interface</a>
 <ul>
-<li><a href="#orgb97096e">4.1. Implementation</a></li>
+<li><a href="#orga89f0f6">2.1. Implementation</a></li>
 </ul>
 </li>
 </ul>
@@ -252,14 +250,17 @@ sound (or another wave, technically) source location.
 </p>
 
 <p>
+There is a demo connector provided, please see <a href="../py/connect.py">../py/connect.py</a>. 
+</p>
+
+<p>
 This file is divided into multiple sections for each IP core.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-nil">Sound Locator
 |\- UART AXI4-Stream interface
-|\- GCC PHAT core
-\-- TDOA MLAT core
+\- GCC PHAT core
 </pre>
 </div>
 
@@ -270,34 +271,9 @@ There were some assumptions made during the design phase:
 <li>All cores communicate using AXI4-Stream,</li>
 <li>Everything is in the same clock domain.</li>
 </ol>
-<div id="outline-container-orge6e2401" class="outline-2">
-<h2 id="orge6e2401"><span class="section-number-2">1.</span> Sound Locator</h2>
+<div id="outline-container-orgb6b9379" class="outline-2">
+<h2 id="orgb6b9379"><span class="section-number-2">1.</span> GCC PHAT core</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-This is the top level module for our project. It integrates GCC PHAT
-with TDOA MLAT along with the UART interface to feed the data into the
-system.
-</p>
-
-<p>
-The most basic idea for "how it is supposed to work" is:
-</p>
-<ol class="org-ol">
-<li>Get 4 streams from 4 microphones.</li>
-<li>Get the time different of arrival (TDOA) from the streams. (GCC
-PHAT part)</li>
-<li>Based on that, calculate the position in 3D. (TDOA MLAT part)</li>
-</ol>
-
-<p>
-This is all connected through the Block Design tool available in
-Vivado.
-</p>
-</div>
-</div>
-<div id="outline-container-orgad78be1" class="outline-2">
-<h2 id="orgad78be1"><span class="section-number-2">2.</span> GCC PHAT core</h2>
-<div class="outline-text-2" id="text-2">
 <p>
 The core is made with Vitis HLS.
 </p>
@@ -381,9 +357,9 @@ The difference is specified as a number of samples. The delay is in
 two-complement.
 </p>
 </div>
-<div id="outline-container-orgb4687f7" class="outline-3">
-<h3 id="orgb4687f7"><span class="section-number-3">2.1.</span> Implementation</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-org694f2ff" class="outline-3">
+<h3 id="org694f2ff"><span class="section-number-3">1.1.</span> Implementation</h3>
+<div class="outline-text-3" id="text-1-1">
 <p>
 Please refer to <a href="../hls_gcc/gcc_phat/gcc_phat.cpp">../hls_gcc/gcc_phat/gcc_phat.cpp</a> for the specific
 details.
@@ -428,38 +404,9 @@ Speech and Signal Processing
 </div>
 </div>
 </div>
-<div id="outline-container-org11f6c39" class="outline-2">
-<h2 id="org11f6c39"><span class="section-number-2">3.</span> TDOA MLAT core</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-@Badzej
-</p>
-
-<p>
-The implemented pseudo-multilateration method is the one shown in [2],
-which is has a closed-form solution and is relatively easy to
-implement (see <a href="../py/golden_mlat.py">../py/golden_mlat.py</a> for reference), as it involves
-matrix multiplication and some simple algebraic transformations.
-</p>
-
-<p>
-Unfortunately, there are two results for each set of delays. This is
-not addressed in the core. The implementer <span class="underline">has</span> to provide their own
-method of choosing the correct result (for example through comparing
-subsequent results). 
-</p>
-
-<p>
-[2]: Schau, H. and Robinson, A., ``Passive source localization
-employing intersecting spherical surfaces from time-of-arrival
-differences'' IEEE Transactions on Acoustics, Speech, and Signal
-Processing
-</p>
-</div>
-</div>
-<div id="outline-container-org52273ad" class="outline-2">
-<h2 id="org52273ad"><span class="section-number-2">4.</span> UART AXI4-Stream interface</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgf706639" class="outline-2">
+<h2 id="orgf706639"><span class="section-number-2">2.</span> UART AXI4-Stream interface</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 This is the connector for the outside world.
 </p>
@@ -472,17 +419,23 @@ the bus easily.
 
 <p>
 It is supposed to connect to the on-board FTDI USB-UART converter
-chip, which (supposedly) supports up to 3Mbaud.
+chip, which supports up to 3Mbaud.
 </p>
 
 <p>
 The interface is just placed in the design, along with some width
 converters.
 </p>
+
+<p>
+Since the IP does not enforce the protocol, user can add their own way
+of making sure that data is correct, with CRC or placing additional
+FSM in-between.
+</p>
 </div>
-<div id="outline-container-orgb97096e" class="outline-3">
-<h3 id="orgb97096e"><span class="section-number-3">4.1.</span> Implementation</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-orga89f0f6" class="outline-3">
+<h3 id="orga89f0f6"><span class="section-number-3">2.1.</span> Implementation</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 FTDI chip gives nicely formatted UART signals. The IP core performs
 the division of the main clock (100MHz/33) to get ~3.03MHz, which is
@@ -495,7 +448,7 @@ AXI4-Stream with no buffering and no checking.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2025-08-27 Wed 23:34</p>
+<p class="date">Created: 2025-08-31 Sun 13:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
