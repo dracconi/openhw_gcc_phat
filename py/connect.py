@@ -7,7 +7,7 @@ import time
 
 GOLDEN="samples.pcm"
 WINDOW = 1024 * 4 * 16
-ITERATIONS=1000
+ITERATIONS=5
 
 with serial.Serial("/dev/ttyUSB1", 3000000, timeout=1) as ser:
     data = np.fromfile(GOLDEN, dtype=np.float64)

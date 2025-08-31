@@ -408,7 +408,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:73a838bd</spirit:value>
+            <spirit:value>9:b9d9a04a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -422,11 +422,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Aug 31 12:49:09 UTC 2025</spirit:value>
+            <spirit:value>Sun Aug 31 14:18:09 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:73a838bd</spirit:value>
+            <spirit:value>9:b9d9a04a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -437,7 +437,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:73a838bd</spirit:value>
+            <spirit:value>9:b9d9a04a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -486,11 +486,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Aug 31 12:44:45 UTC 2025</spirit:value>
+            <spirit:value>Sun Aug 31 14:18:04 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:cbb4f2cc</spirit:value>
+            <spirit:value>9:326c4e2e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -506,11 +506,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Aug 31 12:46:17 UTC 2025</spirit:value>
+            <spirit:value>Sun Aug 31 14:18:04 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:cbb4f2cc</spirit:value>
+            <spirit:value>9:326c4e2e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -559,11 +559,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Aug 31 12:44:45 UTC 2025</spirit:value>
+            <spirit:value>Sun Aug 31 14:18:04 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:73a838bd</spirit:value>
+            <spirit:value>9:b9d9a04a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -579,11 +579,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Aug 31 12:46:17 UTC 2025</spirit:value>
+            <spirit:value>Sun Aug 31 14:18:04 UTC 2025</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:73a838bd</spirit:value>
+            <spirit:value>9:b9d9a04a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -961,142 +961,147 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_bitselect_1ns_32ns_5ns_1_1_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_bitselect_1ns_32ns_5ns_1_1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_ctlz_16_16_1_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_ctlz_16_16_1_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_ctlz_32_32_1_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_ctlz_32_32_1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fadd_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fadd_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fcmp_32ns_32ns_1_2_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fcmp_32ns_32ns_1_2_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fdiv_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fdiv_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fft_fft_params_s.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fft_fft_params_s.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fifo_w8_d2_S.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fifo_w8_d2_S.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fifo_w64_d1024_A.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fifo_w16_d2_S.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_flow_control_loop_pipe_sequential_init.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fifo_w64_d1024_A.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fmul_32ns_32ns_32_4_max_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_flow_control_loop_pipe_sequential_init.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fmul_32ns_32ns_32_4_max_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fsqrt_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fsub_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fsqrt_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_load.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fsub_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_mult_and_normalize.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_load.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_regslice_both.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_mult_and_normalize.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_regslice_both.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_delays_data_RAM_AUTO_1R1W.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_inputs_RAM_AUTO_1R1W.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_delays_data_RAM_AUTO_1R1W.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_71_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_inputs_RAM_AUTO_1R1W.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_99_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_71_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_117_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_99_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_138_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_117_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_reference_M_real_RAM_AUTO_1R1W.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_143_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_sparsemux_9_3_32_1_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_reference_M_real_RAM_AUTO_1R1W.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_sparsemux_9_3_32_1_1.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -1323,115 +1328,119 @@
         <spirit:userFileType>xci</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_bitselect_1ns_32ns_5ns_1_1_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_bitselect_1ns_32ns_5ns_1_1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_ctlz_16_16_1_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_ctlz_16_16_1_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_ctlz_32_32_1_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_ctlz_32_32_1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fadd_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fadd_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fcmp_32ns_32ns_1_2_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fcmp_32ns_32ns_1_2_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fdiv_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fdiv_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fft_fft_params_s.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fft_fft_params_s.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fifo_w8_d2_S.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fifo_w8_d2_S.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fifo_w64_d1024_A.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fifo_w16_d2_S.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_flow_control_loop_pipe_sequential_init.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fifo_w64_d1024_A.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fmul_32ns_32ns_32_4_max_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_flow_control_loop_pipe_sequential_init.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fmul_32ns_32ns_32_4_max_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fsqrt_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fpext_32ns_64_2_no_dsp_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_fsub_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fsqrt_32ns_32ns_32_16_no_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_load.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_fsub_32ns_32ns_32_6_full_dsp_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_mult_and_normalize.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_load.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_regslice_both.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_mult_and_normalize.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_regslice_both.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_delays_data_RAM_AUTO_1R1W.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_inputs_RAM_AUTO_1R1W.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_delays_data_RAM_AUTO_1R1W.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_71_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_inputs_RAM_AUTO_1R1W.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_99_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_71_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_117_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_99_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_138_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_117_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_run_reference_M_real_RAM_AUTO_1R1W.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_143_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat_sparsemux_9_3_32_1_1.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_run_reference_M_real_RAM_AUTO_1R1W.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/8cce/hdl/verilog/gcc_phat.v</spirit:name>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat_sparsemux_9_3_32_1_1.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>../../ipshared/a27c/hdl/verilog/gcc_phat.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1485,7 +1494,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>latency</spirit:name>
-      <spirit:value spirit:id="PARAM_VALUE.latency" spirit:order="4">34935</spirit:value>
+      <spirit:value spirit:id="PARAM_VALUE.latency" spirit:order="4">34938</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1496,7 +1505,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>II</spirit:name>
-      <spirit:value spirit:id="PARAM_VALUE.II" spirit:order="5">34936</spirit:value>
+      <spirit:value spirit:id="PARAM_VALUE.II" spirit:order="5">34939</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -1513,7 +1522,7 @@
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>2114239155</xilinx:coreRevision>
+      <xilinx:coreRevision>2114239993</xilinx:coreRevision>
       <xilinx:sdxKernelAttributes>
         <xilinx:sdx_kernel>true</xilinx:sdx_kernel>
         <xilinx:sdx_kernel_type>hls</xilinx:sdx_kernel_type>
@@ -1558,9 +1567,9 @@
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="fa887332"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="139415b8"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="37b3c3a4"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="09e98d14"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="0b5c52ba"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="ed1a47a2"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

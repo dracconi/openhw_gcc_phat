@@ -11,14 +11,14 @@ preplace port port-id_rx -pg 1 -lvl 0 -x 0 -y 170 -defaultsOSRD
 preplace port port-id_tx -pg 1 -lvl 3 -x 550 -y 130 -defaultsOSRD
 preplace inst uart_axis_0 -pg 1 -lvl 2 -x 410 -y 120 -defaultsOSRD
 preplace inst axis_data_fifo_0 -pg 1 -lvl 1 -x 150 -y 90 -defaultsOSRD
-preplace netloc rx_1 1 0 2 NJ 170 270J
-preplace netloc rstn_1 1 0 2 30 190 290J
 preplace netloc clk_1 1 0 2 20 180 280J
+preplace netloc rstn_1 1 0 2 30 190 290J
+preplace netloc rx_1 1 0 2 NJ 170 270J
 preplace netloc uart_axis_0_tx 1 2 1 N 130
 preplace netloc axis_data_fifo_0_M_AXIS 1 1 1 N 90
 preplace netloc uart_axis_0_m_data 1 0 3 30 10 NJ 10 530
 levelinfo -pg 1 0 150 410 550
-pagesize -pg 1 -db -bbox -sgen -80 0 610 200
+pagesize -pg 1 -db -bbox -sgen -80 0 620 200
 "
 }
-
+0

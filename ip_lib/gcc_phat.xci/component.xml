@@ -158,7 +158,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>0a176bf6</spirit:value>
+            <spirit:value>2158d6ba</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -180,7 +180,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>29f89b7d</spirit:value>
+            <spirit:value>c276b6e7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -202,7 +202,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>4c40c52e</spirit:value>
+            <spirit:value>e301e152</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -224,7 +224,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>e479bdad</spirit:value>
+            <spirit:value>632752ab</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -471,6 +471,10 @@
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
+        <spirit:name>hdl/verilog/gcc_phat_fifo_w16_d2_S.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>hdl/verilog/gcc_phat_fifo_w64_d1024_A.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
@@ -535,7 +539,7 @@
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_138_1.v</spirit:name>
+        <spirit:name>hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_143_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -650,6 +654,11 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
+        <spirit:name>hdl/verilog/gcc_phat_fifo_w16_d2_S.v</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>hdl/verilog/gcc_phat_fifo_w64_d1024_A.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
@@ -730,7 +739,7 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_138_1.v</spirit:name>
+        <spirit:name>hdl/verilog/gcc_phat_run_Pipeline_VITIS_LOOP_143_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -846,6 +855,10 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
+        <spirit:name>hdl/vhdl/gcc_phat_fifo_w16_d2_S.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>hdl/vhdl/gcc_phat_fifo_w64_d1024_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
@@ -910,7 +923,7 @@
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/vhdl/gcc_phat_run_Pipeline_VITIS_LOOP_138_1.vhd</spirit:name>
+        <spirit:name>hdl/vhdl/gcc_phat_run_Pipeline_VITIS_LOOP_143_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -924,7 +937,7 @@
       <spirit:file>
         <spirit:name>hdl/vhdl/gcc_phat.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_b98329d3</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_c099141b</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -1026,6 +1039,11 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
+        <spirit:name>hdl/vhdl/gcc_phat_fifo_w16_d2_S.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
         <spirit:name>hdl/vhdl/gcc_phat_fifo_w64_d1024_A.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
@@ -1106,7 +1124,7 @@
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/vhdl/gcc_phat_run_Pipeline_VITIS_LOOP_138_1.vhd</spirit:name>
+        <spirit:name>hdl/vhdl/gcc_phat_run_Pipeline_VITIS_LOOP_143_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
       </spirit:file>
@@ -1198,11 +1216,11 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>latency</spirit:name>
-      <spirit:value spirit:id="PARAM_VALUE.latency" spirit:order="4">34935</spirit:value>
+      <spirit:value spirit:id="PARAM_VALUE.latency" spirit:order="4">34938</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>II</spirit:name>
-      <spirit:value spirit:id="PARAM_VALUE.II" spirit:order="5">34936</spirit:value>
+      <spirit:value spirit:id="PARAM_VALUE.II" spirit:order="5">34939</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
@@ -1215,8 +1233,8 @@
       </xilinx:taxonomies>
       <xilinx:displayName>GCC PHAT algorithm</xilinx:displayName>
       <xilinx:definitionSource>HLS</xilinx:definitionSource>
-      <xilinx:coreRevision>2114239155</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2025-08-31T00:16:00Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>2114239993</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2025-08-31T14:13:34Z</xilinx:coreCreationDateTime>
       <xilinx:sdxKernelAttributes>
         <xilinx:sdx_kernel>true</xilinx:sdx_kernel>
         <xilinx:sdx_kernel_type>hls</xilinx:sdx_kernel_type>
@@ -1225,9 +1243,9 @@
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2025.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="fa887332"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="139415b8"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="37b3c3a4"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="09e98d14"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="0b5c52ba"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="ed1a47a2"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

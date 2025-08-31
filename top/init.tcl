@@ -17,6 +17,8 @@ if {[file exist "prj"]} {
     read_bd bd/demo/demo.bd
     read_bd bd/test_uart/test_uart.bd
 
+    update_module_reference {demo_uart_axis_0_0 demo_gcc_phat_0_0 test_uart_uart_axis_0_0}
+
     make_wrapper -top -import [get_files bd/demo/demo.bd]
     make_wrapper -top -import [get_files bd/test_uart/test_uart.bd]
 

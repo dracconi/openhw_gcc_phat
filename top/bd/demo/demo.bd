@@ -284,7 +284,7 @@
       },
       "gcc_phat_0": {
         "vlnv": "polsl:gcc_internal:gcc_phat:1.0",
-        "ip_revision": "2114239155",
+        "ip_revision": "2114239993",
         "xci_name": "demo_gcc_phat_0_0",
         "xci_path": "ip/demo_gcc_phat_0_0/demo_gcc_phat_0_0.xci",
         "inst_hier_path": "gcc_phat_0",
@@ -381,11 +381,23 @@
         "inst_hier_path": "clk_wiz_0",
         "has_run_ip_tcl": "true",
         "parameters": {
+          "CLKIN1_JITTER_PS": {
+            "value": "250"
+          },
+          "CLKIN1_UI_JITTER": {
+            "value": "250"
+          },
+          "CLKIN2_JITTER_PS": {
+            "value": "100.000"
+          },
+          "CLKIN2_UI_JITTER": {
+            "value": "100.000"
+          },
           "CLKOUT1_DRIVES": {
             "value": "BUFG"
           },
           "CLKOUT1_JITTER": {
-            "value": "130.958"
+            "value": "171.089"
           },
           "CLKOUT1_PHASE_ERROR": {
             "value": "98.575"
@@ -414,6 +426,9 @@
           "FEEDBACK_SOURCE": {
             "value": "FDBK_AUTO"
           },
+          "JITTER_OPTIONS": {
+            "value": "PS"
+          },
           "MMCM_BANDWIDTH": {
             "value": "OPTIMIZED"
           },
@@ -425,6 +440,12 @@
           },
           "MMCM_COMPENSATION": {
             "value": "ZHOLD"
+          },
+          "MMCM_REF_JITTER1": {
+            "value": "0.025"
+          },
+          "MMCM_REF_JITTER2": {
+            "value": "0.010"
           },
           "PRIMITIVE": {
             "value": "MMCM"

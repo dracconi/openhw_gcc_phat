@@ -110,8 +110,8 @@ void fft_wrap(hls::stream<fft_in>& in, hls::stream<fft_out>& out,
   status.read();
 }
 
-out_delay find_maximum(hls::stream<fft_out>& in) {
-  unsigned short index;
+void find_maximum(hls::stream<fft_out>& in, hls::stream<out_delay>& delay) {
+  unsigned short index = 0;
   fft_out::value_type maximum = 0;
 
   for (int i = 0; i < NFFT; i++) {
@@ -119,10 +119,13 @@ out_delay find_maximum(hls::stream<fft_out>& in) {
     if (maximum < tmp) {
       maximum = tmp;
       index = i;
+    } else {
+      maximum = maximum;
+      index = index;
     }
   }
 
-  return index;
+  delay.write(index);
 }
 
 void run(hls::stream<in_frame>& in, hls::stream<out_frame>& out) {
@@ -134,6 +137,8 @@ void run(hls::stream<in_frame>& in, hls::stream<out_frame>& out) {
   hls::stream<fft_out, NFFT> fft_stream_out;
   hls::stream<fft_config, 2> fft_stream_config;
   hls::stream<fft_status, 2> fft_stream_status;
+
+  hls::stream<out_delay, 2> stream_delays;
 
   for (int i = 0; i < NFFT; i++) {
     in_frame frame = in.read();
@@ -164,7 +169,9 @@ void run(hls::stream<in_frame>& in, hls::stream<out_frame>& out) {
     fft_wrap(fft_stream_in, fft_stream_out, fft_stream_status,
              fft_stream_config);
 
-    delays.data.delays[i] = find_maximum(fft_stream_out);
+    find_maximum(fft_stream_out, stream_delays);
+
+    delays.data.delays[i] = stream_delays.read();
   }
 
   out.write(delays);

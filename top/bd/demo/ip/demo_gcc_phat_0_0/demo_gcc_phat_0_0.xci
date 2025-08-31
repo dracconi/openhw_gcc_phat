@@ -4,7 +4,7 @@
     "xci_name": "demo_gcc_phat_0_0",
     "cell_name": "gcc_phat_0",
     "component_reference": "polsl:gcc_internal:gcc_phat:1.0",
-    "ip_revision": "2114239155",
+    "ip_revision": "2114239993",
     "gen_directory": ".",
     "parameters": {
       "component_parameters": {
@@ -12,8 +12,8 @@
         "clk_period": [ { "value": "10", "enabled": false, "usage": "all" } ],
         "machine": [ { "value": "64", "enabled": false, "usage": "all" } ],
         "combinational": [ { "value": "0", "enabled": false, "usage": "all" } ],
-        "latency": [ { "value": "34935", "enabled": false, "usage": "all" } ],
-        "II": [ { "value": "34936", "enabled": false, "usage": "all" } ]
+        "latency": [ { "value": "34938", "enabled": false, "usage": "all" } ],
+        "II": [ { "value": "34939", "enabled": false, "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "spartan7" } ],
@@ -30,7 +30,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "2114239155" } ],
+        "IPREVISION": [ { "value": "2114239993" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "." } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
