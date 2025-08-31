@@ -7,20 +7,20 @@ import time
 
 GOLDEN="samples.pcm"
 WINDOW = 1024 * 4 * 16
-ITERATIONS=20
+ITERATIONS=1000
 
-with serial.Serial("/dev/ttyUSB1", 115384, timeout=1) as ser:
+with serial.Serial("/dev/ttyUSB1", 3000000, timeout=1) as ser:
     data = np.fromfile(GOLDEN, dtype=np.float64)
     bad = 0
     with open(GOLDEN,"rb") as f:
         for k in range(ITERATIONS):
             print(".", end="")
             #print("Setup:")
-            initial = 1024 #random.randrange(1024, 2048)
-            delays = [10, 200, 210] #[random.randrange(0, 500) for _ in range(1, 4)]
+            initial = random.randrange(1024, 2048)
+            delays = [random.randrange(0, 500) for _ in range(1, 4)]
             delays = [0] + delays
             #print(initial, delays)
-            streams = [get_samples(data, delay, initial) for delay in delays]
+            streams = [get_samples(data, delay, initial)+random.random()/10 for delay in delays]
             for i in range(1024):
                 for j in range(4):
                     ser.write(struct.pack('h', int(streams[j][i] * (2**16))))
@@ -36,7 +36,7 @@ with serial.Serial("/dev/ttyUSB1", 115384, timeout=1) as ser:
                 if (res0[i] != gold and gold == delays[i + 1]):
                     ok = False
                     print("\n---")
-                    print("oops", i, delays, res0, gold, res)
+                    print("oops", i, delays, res0, gold, delays)
                     print("---")
             if not ok:
                 bad = bad + 1
