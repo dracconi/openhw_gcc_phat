@@ -219,8 +219,8 @@ attribute shreg_extract : string;
     signal grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_ap_idle : STD_LOGIC;
     signal grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_ap_ready : STD_LOGIC;
     signal grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_fft_stream_out_read : STD_LOGIC;
-    signal grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out : STD_LOGIC_VECTOR (15 downto 0);
-    signal grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out_ap_vld : STD_LOGIC;
+    signal grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out : STD_LOGIC_VECTOR (15 downto 0);
+    signal grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out_ap_vld : STD_LOGIC;
     signal grp_run_Pipeline_VITIS_LOOP_138_1_fu_208_ap_start_reg : STD_LOGIC := '0';
     signal ap_CS_fsm_state2 : STD_LOGIC;
     attribute fsm_encoding of ap_CS_fsm_state2 : signal is "none";
@@ -448,8 +448,8 @@ attribute shreg_extract : string;
         fft_stream_out_dout : IN STD_LOGIC_VECTOR (63 downto 0);
         fft_stream_out_empty_n : IN STD_LOGIC;
         fft_stream_out_read : OUT STD_LOGIC;
-        conv2_i_i6_i_out : OUT STD_LOGIC_VECTOR (15 downto 0);
-        conv2_i_i6_i_out_ap_vld : OUT STD_LOGIC );
+        index_out : OUT STD_LOGIC_VECTOR (15 downto 0);
+        index_out_ap_vld : OUT STD_LOGIC );
     end component;
 
 
@@ -647,7 +647,7 @@ begin
         address0 => delays_data_address0_local,
         ce0 => delays_data_ce0_local,
         we0 => delays_data_we0_local,
-        d0 => grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out,
+        d0 => grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out,
         q0 => delays_data_q0,
         address1 => delays_data_address1,
         ce1 => delays_data_ce1_local,
@@ -770,8 +770,8 @@ begin
         fft_stream_out_dout => fft_stream_out_dout,
         fft_stream_out_empty_n => fft_stream_out_empty_n,
         fft_stream_out_read => grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_fft_stream_out_read,
-        conv2_i_i6_i_out => grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out,
-        conv2_i_i6_i_out_ap_vld => grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out_ap_vld);
+        index_out => grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out,
+        index_out_ap_vld => grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out_ap_vld);
 
     fft_stream_in_fifo_U : component gcc_phat_fifo_w64_d1024_A
     port map (

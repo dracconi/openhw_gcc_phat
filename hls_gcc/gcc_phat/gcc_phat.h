@@ -12,7 +12,7 @@ struct in_data {
   in_sample sample[CHANNELS];
 };
 
-using out_delay = ap_int<16>;
+using out_delay = unsigned short;
 
 struct out_data {
   out_delay delays[DELAYS];

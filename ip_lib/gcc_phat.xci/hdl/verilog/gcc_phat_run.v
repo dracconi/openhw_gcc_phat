@@ -182,8 +182,8 @@ wire    grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_ap_done;
 wire    grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_ap_idle;
 wire    grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_ap_ready;
 wire    grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_fft_stream_out_read;
-wire   [15:0] grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out;
-wire    grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out_ap_vld;
+wire   [15:0] grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out;
+wire    grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out_ap_vld;
 reg    grp_run_Pipeline_VITIS_LOOP_138_1_fu_208_ap_start_reg;
 wire    ap_CS_fsm_state2;
 wire    ap_CS_fsm_state3;
@@ -379,7 +379,7 @@ delays_data_U(
     .address0(delays_data_address0_local),
     .ce0(delays_data_ce0_local),
     .we0(delays_data_we0_local),
-    .d0(grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out),
+    .d0(grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out),
     .q0(delays_data_q0),
     .address1(delays_data_address1),
     .ce1(delays_data_ce1_local),
@@ -502,8 +502,8 @@ gcc_phat_run_Pipeline_VITIS_LOOP_117_1 grp_run_Pipeline_VITIS_LOOP_117_1_fu_247(
     .fft_stream_out_dout(fft_stream_out_dout),
     .fft_stream_out_empty_n(fft_stream_out_empty_n),
     .fft_stream_out_read(grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_fft_stream_out_read),
-    .conv2_i_i6_i_out(grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out),
-    .conv2_i_i6_i_out_ap_vld(grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_conv2_i_i6_i_out_ap_vld)
+    .index_out(grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out),
+    .index_out_ap_vld(grp_run_Pipeline_VITIS_LOOP_117_1_fu_247_index_out_ap_vld)
 );
 
 gcc_phat_fifo_w64_d1024_A fft_stream_in_fifo_U(

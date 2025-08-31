@@ -6,6 +6,8 @@
 
 #include <complex>
 
+#include <limits.h>
+
 #include <stdio.h>
 
 struct fft_params : hls::ip_fft::params_t {
@@ -109,7 +111,7 @@ void fft_wrap(hls::stream<fft_in>& in, hls::stream<fft_out>& out,
 }
 
 out_delay find_maximum(hls::stream<fft_out>& in) {
-  out_delay index = 0;
+  unsigned short index;
   fft_out::value_type maximum = 0;
 
   for (int i = 0; i < NFFT; i++) {
@@ -117,7 +119,6 @@ out_delay find_maximum(hls::stream<fft_out>& in) {
     if (maximum < tmp) {
       maximum = tmp;
       index = i;
-      index = (i > NFFT / 2) ? -index : index;
     }
   }
 
@@ -167,16 +168,6 @@ void run(hls::stream<in_frame>& in, hls::stream<out_frame>& out) {
   }
 
   out.write(delays);
-}
-
-void split_wrap(hls::stream<in_frame>& in,
-                hls::stream<in_sample> split[CHANNELS]) {
-  in_frame frame = in.read();
-
-  for (int i = 0; i < CHANNELS; i++) {
-#pragma HLS UNROLL
-    split[i].write(frame.data.sample[i]);
-  }
 }
 
 void gcc_phat(hls::stream<in_frame>& stream_in,
